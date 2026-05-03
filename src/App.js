@@ -1,15 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-
+import Header from './component/Header';
+import Blog from './component/Blog';
+import Footer from './component/Footer';
 function App() {
   return (
-    <div className="h-screen flex items-center justify-center bg-gray-100">
-       <h1 className="text-4xl font-bold text-blue-600">
-         React 18 + Tailwind CSS Working 🚀
-       </h1>
-     </div>
-
+    <div className="h-full w-full gap-y-1 flex flex-col justify-center items-center ">
+      <Header />
+      <Blog />
+      <Footer />
+    </div>
   );
 }
 
 export default App;
+
+    
