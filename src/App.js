@@ -1,14 +1,20 @@
 import React from 'react';
 import './App.css';
-import Header from './component/Header';
-import Blog from './component/Blog';
-import Footer from './component/Footer';
+import Home from './pages/Home';
+import BlogPage from './pages/BlogPage';
+import TagePage from './pages/TagePage';
+import Category from './pages/Category';
+import { Route, Routes } from 'react-router-dom';
 function App() {
   return (
-    <div className="h-full w-full gap-y-1 flex flex-col justify-center items-center ">
-      <Header />
-      <Blog />
-      <Footer />
+
+    <div>
+    <Routes>
+      <Route path='/' element={<Home/>}></Route>
+      <Route path='/blog/:blogId' element={<BlogPage/>}></Route>
+      <Route path='/tag/:tag' element={<TagePage/>}></Route>
+      <Route path='/category/:category' element={<Category/>}></Route>
+    </Routes>
     </div>
   );
 }

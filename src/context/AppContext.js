@@ -19,26 +19,34 @@ function AppContextProvider({ children }) {
         setPageHandler,
         reset
     };
-    async function getblogs(page = 1) {
+    // fetch th data from api
+    async function getblogs(page = 1,tag=null,category=null) {
         setLoad(true);
         const url = `${baseUrl}?page=${page}`;
-        
+        if(tag)
+            url+=`&tag=${tag}`;
+        if(category)
+            url+=`&category=${category}`;
         try {
             const response = await fetch(url);
             const data = await response.json();
             // console.log(data);
+            // if(!data.blogs || data.blogs.length === 0){
+            //     throw new Error("No blogs found");
+            // }
             setPage(data.page);
             setBlogs(data.posts);
             setPages(data.totalPages);
-            setLoad(false);
+            
         }
         catch (err) {
             alert("Something went wrong");
             setPage(1);
             setBlogs([]);
             setPages(null);
-            setLoad(false);
+        
         }
+        setLoad(false); 
     }
     useEffect(() => {
         getblogs();
